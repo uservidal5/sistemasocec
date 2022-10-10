@@ -27,9 +27,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard
 Route::get('/dashboard/colaboradores', [ColaboradorController::class, 'index'])->name("colaboradores.index");
 Route::get('/dashboard/colaboradores/create', [ColaboradorController::class, 'create'])->name("colaboradores.create");
 Route::post('/dashboard/colaboradores/create', [ColaboradorController::class, 'store'])->name("colaboradores.store");
-Route::get('/dashboard/colaboradores/{id}', [ColaboradorController::class, 'show'])->name("colaboradores.show");
-Route::get('/dashboard/colaboradores/edit/', [ColaboradorController::class, 'edit'])->name("colaboradores.edit");
+Route::get('/dashboard/colaboradores/{colaborador}', [ColaboradorController::class, 'show'])->name("colaboradores.show");
+Route::get('/dashboard/colaboradores/{colaborador}/edit/', [ColaboradorController::class, 'edit'])->name("colaboradores.edit");
+Route::put('/dashboard/colaboradores/{colaborador}', [ColaboradorController::class, 'update'])->name("colaboradores.update");
 Route::delete('/dashboard/colaboradores/{colaborador}', [ColaboradorController::class, 'destroy'])->name("colaboradores.delete");
+// Route::resource('/dashboard/colaboradores', ColaboradorController::class);
 
 ////Certificacion
 Route::get('/dashboard/certificaciones', [CertificacionController::class, 'index'])->name("certificaciones.index");

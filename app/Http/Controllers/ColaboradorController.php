@@ -44,7 +44,7 @@ class ColaboradorController extends Controller
         //
         $new_colaborador = new Colaborador($request->all());
         $new_colaborador->save();
-        return redirect(route("colaboradores.index"));
+        return redirect(route("colaboradores.index"))->with(["status" => "ok", "message" => "Colaborador agregado con éxito!"]);
     }
 
     /**
@@ -68,10 +68,9 @@ class ColaboradorController extends Controller
     public function edit(Colaborador $colaborador)
     {
         //
-        $idColaborador=$colaborador->id;
-        $colaborador2=Colaborador::findOrFail($idColaborador);
+        $data["colaborador"] = $colaborador;
         //return view('colaborador.edit',compact('$colaborador2'));
-        return $colaborador2;
+        return view("dashboard.colaboradores.edit", $data);
     }
 
     /**
@@ -84,6 +83,8 @@ class ColaboradorController extends Controller
     public function update(UpdateColaboradorRequest $request, Colaborador $colaborador)
     {
         //
+        $colaborador->update($request->all());
+        return redirect(route("colaboradores.index"))->with(["status" => "ok", "message" => "Colaborador actualizado con éxito!"]);
     }
 
     /**
