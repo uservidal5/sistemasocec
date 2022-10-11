@@ -37,6 +37,9 @@ Route::delete('/dashboard/colaboradores/{colaborador}', [ColaboradorController::
 Route::get('/dashboard/certificaciones', [CertificacionController::class, 'index'])->name("certificaciones.index");
 Route::get('/dashboard/certificaciones/create', [CertificacionController::class, 'create'])->name("certificaciones.create");
 Route::post('/dashboard/certificaciones/create', [CertificacionController::class, 'store'])->name("certificaciones.store");
-Route::get('/dashboard/certificaciones/{id}', [CertificacionController::class, 'show'])->name("certificaciones.show");
+Route::get('/dashboard/certificaciones/{certificacion}', [CertificacionController::class, 'show'])->name("certificaciones.show");
+Route::get('/dashboard/certificaciones/{certificacion}/edit/', [CertificacionController::class, 'edit'])->name("certificaciones.edit");
+Route::put('/dashboard/certificaciones/{certificacion}', [CertificacionController::class, 'update'])->name("certificaciones.update");
+Route::delete('/dashboard/certificaciones/{certificacion}', [CertificacionController::class, 'destroy'])->name("certificaciones.delete");
 
 //Public

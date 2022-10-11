@@ -9,7 +9,9 @@
         <div class="row">
             <div class="col-12">
                 <h1>• Colaboradores</h1>
-                <a href="{{ route('dashboard.index') }}">Dashboard></a>
+                <a href="{{ route('dashboard.index') }}">
+                    <i class="fas fa-angle-left"></i>
+                        Dashboard</a>
                 {{-- <h3>{{dd($colaboradores)}}</h3> --}}
             </div>
             <div class="col-12 text-right mb-4">

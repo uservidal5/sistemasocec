@@ -9,7 +9,9 @@ Certificaciones | Inicio
             <div class="row">
                 <div class="col-12">
                     <h1>• Certificaciones</h1>
-                    <a href="{{route('dashboard.index')}}">< Dashboard</a>
+                    <a href="{{route('dashboard.index')}}">
+                        <i class="fas fa-angle-left"></i>
+                        Dashboard</a>
                     {{-- <h3>{{dd($certificaciones)}}</h3> --}}
                 </div>
                 <div class="col-12 text-right mb-4">
@@ -51,15 +53,22 @@ Certificaciones | Inicio
                                         <td>{{$certificacion->documento_curso_cer}}</td>    
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{route('certificaciones.show', ['id'=>$certificacion])}}" class="btn">
+                                                {{-- <a href="{{route('certificaciones.show', ['id'=>$certificacion])}}" class="btn">
                                                     <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a href="" class="btn">
+                                                </a> --}}
+                                                <a href="{{ route('certificaciones.edit', ['certificacion' => $certificacion]) }}"
+                                                    class="btn">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <button type="button" class="btn">
-                                                    <i class="fas fa-trash"></i>
+                                                <form class="d-inline-block" method="POST"
+                                                id="form-delete-{{ $certificacion->id }}"
+                                                action="{{ route('certificaciones.delete', ['certificacion' => $certificacion]) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn">
+                                                    <i class="fas fa-trash text-danger"></i>
                                                 </button>
+                                            </form>
                                             </div>                                            
                                         </td>                                      
                                     </tr>

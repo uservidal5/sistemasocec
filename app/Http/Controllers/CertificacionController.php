@@ -44,7 +44,7 @@ class CertificacionController extends Controller
         //
         $new_certificacion = new Certificacion($request->all());
         $new_certificacion->save();
-        return redirect(route("certificaciones.index"));
+        return redirect(route("certificaciones.index"))->with(["status" => "ok", "message" => "Certificación agregada con éxito!"]);
     }
 
     /**
@@ -68,6 +68,8 @@ class CertificacionController extends Controller
     public function edit(Certificacion $certificacion)
     {
         //
+        $data["certificacion"] = $certificacion;
+        return view("dashboard.certificaciones.edit", $data);
     }
 
     /**
@@ -80,6 +82,8 @@ class CertificacionController extends Controller
     public function update(UpdateCertificacionRequest $request, Certificacion $certificacion)
     {
         //
+        $certificacion->update($request->all());
+        return redirect(route("certificaciones.index"))->with(["status" => "ok", "message" => "Certificación actualizada con éxito!"]);
     }
 
     /**
@@ -91,5 +95,7 @@ class CertificacionController extends Controller
     public function destroy(Certificacion $certificacion)
     {
         //
+        $certificacion->delete();
+        return back()->with(["status" => "ok", "message" => "Certificación eliminada con éxito!"]);
     }
 }
